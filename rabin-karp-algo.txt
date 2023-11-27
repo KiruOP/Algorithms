@@ -1,0 +1,41 @@
+#include <stdio.h>
+#include <string.h>
+Void searchRabinKarp(char *pattern, char *text, int q) {
+ Int M = strlen(pattern);
+ Int N = strlen(text);
+ Int I, j;
+ Int p = 0;
+ Int t = 0; 
+ Int h = 1;
+ For (I = 0; I < M – 1; i++) {
+ H = (h * 256) % q;
+ }
+ For (I = 0; I < M; i++) {
+ P = (256 * p + pattern[i]) % q;
+ T = (256 * t + text[i]) % q;
+ }
+ For (I = 0; I <= N – M; i++) {
+ If (p == t) {
+ For (j = 0; j < M; j++) {
+ If (text[I + j] != pattern[j])
+ Break;
+ }
+ If (j == M) {
+ Printf(“Pattern found at index %d\n”, i);
+ }
+ }
+ If (I < N – M) {
+ T = (256 * (t – text[i] * h) + text[I + M]) % q;
+ If (t < 0) {
+ T = (t + q);
+ }
+ }
+ }
+}
+Int main() {
+ Char text[] = “AABAACAADAABAABA”;
+ Char pattern[] = “AABA”;
+ Int q = 101; 
+ searchRabinKarp(pattern, text, q);
+ return 0;
+}

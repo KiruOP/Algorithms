@@ -1,0 +1,53 @@
+#include <stdio.h>
+Int tsp_g[10][10] = {
+ {12, 30, 33, 10, 45},
+ {56, 22, 9, 15, 18},
+ {29, 13, 8, 5, 12},
+ {33, 28, 16, 10, 3},
+ {1, 4, 30, 24, 20}
+};
+Int visited[10], n, cost = 0;
+/* creating a function to generate the shortest path */
+Void travellingsalesman(int c){
+ Int k, adj_vertex = 999;
+ Int min = 999;
+ 
+ /* marking the vertices visited in an assigned array */
+ Visited[c] = 1;
+ 
+ /* displaying the shortest path */
+ Printf(“%d “, c + 1);
+ 
+ /* checking the minimum cost edge in the graph */
+ For(k = 0; k < n; k++) {
+ If((tsp_g[c][k] != 0) && (visited[k] == 0)) {
+ If(tsp_g[c][k] < min) {
+ Min = tsp_g[c][k];
+ }
+ Adj_vertex = k;
+ }
+ }
+ If(min != 999) {
+ Cost = cost + min;
+ }
+ If(adj_vertex == 999) {
+ Adj_vertex = 0;
+ Printf(“%d”, adj_vertex + 1);
+ Cost = cost + tsp_g[c][adj_vertex];
+ Return;
+ }
+ Travellingsalesman(adj_vertex);
+}
+/* main function */
+Int main(){
+ Int I, j;
+ N = 5;
+ For(I = 0; I < n; i++) {
+ Visited[i] = 0;
+ }
+ Printf(“\nShortest Path: “);
+ Travellingsalesman(0);
+ Printf(“\nMinimum Cost: “);
+ Printf(“%d\n”, cost);
+ Return 0;
+}
